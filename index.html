@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter 4</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: black;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: maroon;
+        }
+
+        .counter {
+            font-size: 110px;
+            font-weight: bold;
+        }
+
+        .label {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="counter" id="counter4">0</div>
+    
+
+    <script>
+        function animateCounter(element, start, end, duration) {
+            let startTime = null;
+
+            function updateCounter(timestamp) {
+                if (!startTime) startTime = timestamp;
+                let progress = timestamp - startTime;
+                let current = Math.min(Math.floor(start + (end - start) * (progress / duration)), end);
+
+                element.innerText = current;
+
+                if (current < end) {
+                    requestAnimationFrame(updateCounter);
+                }
+            }
+
+            requestAnimationFrame(updateCounter);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            animateCounter(document.getElementById("counter4"), 0, 34535, 5000);
+        });
+    </script>
+
+</body>
+</html>
